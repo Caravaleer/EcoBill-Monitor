@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Electricity Bill Calculator</title>
+         <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+</head>
+<body class="index-page">
+    <header id="header" class="header d-flex align-items-center fixed-top" style="background-color: #37517e;">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    
+          <a href="index.html" class="logo d-flex align-items-center me-auto">
+    
+            <h1 class="sitename">BillBuster</h1>
+          </a>
+    
+          <nav id="navmenu" class="navmenu">
+            <ul>
+              <li><a href="index.html" class="">Home</a></li>
+              <li><a href="eletricity.HTML">Electricity</a></li>
+              <li><a href="gas.html">Gas</a></li>
+              <li><a href="water.html">Water</a></li>
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+          </nav>
+    
+    
+        </div>
+      </header>
+      <main class="main">
+        <section style="margin-top: 3%;">
+    <h2>Electricity Bill Calculator</h2>
+    <form id="billForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br><br>
+
+        <label for="currentBill">Current Electricity Bill (Rs):</label>
+        <input type="number" id="currentBill" required><br><br>
+
+        <label for="chargesPerUnit">Current Charges (Rs/unit):</label>
+        <input type="number" id="chargesPerUnit" value="7" required><br><br>
+
+        <label for="desiredBill">Desired Electricity Bill (Rs):</label>
+        <input type="number" id="desiredBill" required><br><br>
+
+        <button type="button" onclick="calculate()">Calculate</button>
+    </form>
+
+    <h3>Output:</h3>
+    <div id="output"></div>
+</main>
+<footer id="footer" class="footer">
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">BillBuster</strong> <span>All Rights Reserved</span></p>
+    </div>
+
+  </footer>
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+  
+
+
+    <script>
+        function calculate() {
+            const name = document.getElementById('name').value;
+            const currentBill = parseFloat(document.getElementById('currentBill').value);
+            const chargesPerUnit = parseFloat(document.getElementById('chargesPerUnit').value);
+            const desiredBill = parseFloat(document.getElementById('desiredBill').value);
+
+            if (isNaN(currentBill) || isNaN(chargesPerUnit) || isNaN(desiredBill) || currentBill <= 0 || chargesPerUnit <= 0 || desiredBill <= 0) {
+                alert("Please enter valid numbers for all fields.");
+                return;
+            }
+
+            const currentUnits = currentBill / chargesPerUnit;
+            const desiredUnits = desiredBill / chargesPerUnit;
+
+            const dailyUsageCurrent = currentUnits / 30;
+            const dailyUsageDesired = desiredUnits / 30;
+
+            const monthlyUsageCurrent = currentUnits;
+            const monthlyUsageDesired = desiredUnits;
+
+            const percentageSaved = ((currentUnits - desiredUnits) / currentUnits) * 100;
+
+            const output = `
+                <p>Name: ${name}</p>
+                <p>Units needed per day for desired bill: ${dailyUsageDesired.toFixed(2)} units</p>
+                <p>Units needed per month for desired bill: ${monthlyUsageDesired.toFixed(2)} units</p>
+                <p>Congratulations, ${name}! You are saving ${percentageSaved.toFixed(2)}% of your electricity usage. Thank you for your effort in conserving energy. By saving electricity, you are not only reducing your bill but also helping to protect the environment by reducing carbon emissions and conserving natural resources. Your actions contribute to a more sustainable and eco-friendly world!</p>
+            `;
+
+            document.getElementById('output').innerHTML = output;
+        }
+    </script>
+    
+</body>
+</html>

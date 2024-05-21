@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Water Bill Calculator</title>
+         <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+</head>
+<body class="index-page">
+    <header id="header" class="header d-flex align-items-center fixed-top" style="background-color: #37517e;">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    
+          <a href="index.html" class="logo d-flex align-items-center me-auto">
+    
+            <h1 class="sitename">BillBuster</h1>
+          </a>
+    
+          <nav id="navmenu" class="navmenu">
+            <ul>
+              <li><a href="index.html" class="">Home</a></li>
+              <li><a href="eletricity.HTML">Electricity</a></li>
+              <li><a href="gas.html">Gas</a></li>
+              <li><a href="water.html">Water</a></li>
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+          </nav>
+    
+    
+        </div>
+      </header>
+      <main class="main">
+        <section style="margin-top: 3%;">
+    <h2>Water Bill Calculator</h2>
+    <form id="billForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br><br>
+
+        <label for="currentBill">Current Water Bill (Rs):</label>
+        <input type="number" id="currentBill" required><br><br>
+
+        <label for="chargesPer1000L">Current Charges (Rs/1000 liters):</label>
+        <input type="number" id="chargesPer1000L" value="33" required><br><br>
+
+        <label for="desiredBill">Desired Water Bill (Rs):</label>
+        <input type="number" id="desiredBill" required><br><br>
+
+        <button type="button" onclick="calculate()">Calculate</button>
+    </form>
+
+    <h3>Output:</h3>
+    <div id="output"></div>
+</main>
+<footer id="footer" class="footer">
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">BillBuster</strong> <span>All Rights Reserved</span></p>
+    </div>
+
+  </footer>
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+  
+
+    <script>
+        function calculate() {
+            const name = document.getElementById('name').value;
+            const currentBill = parseFloat(document.getElementById('currentBill').value);
+            const chargesPer1000L = parseFloat(document.getElementById('chargesPer1000L').value);
+            const desiredBill = parseFloat(document.getElementById('desiredBill').value);
+
+            if (isNaN(currentBill) || isNaN(chargesPer1000L) || isNaN(desiredBill) || currentBill <= 0 || chargesPer1000L <= 0 || desiredBill <= 0) {
+                alert("Please enter valid numbers for all fields.");
+                return;
+            }
+
+            const currentLiters = (currentBill / chargesPer1000L) * 1000;
+            const desiredLiters = (desiredBill / chargesPer1000L) * 1000;
+
+            const dailyUsageCurrent = currentLiters / 30;
+            const dailyUsageDesired = desiredLiters / 30;
+
+            const monthlyUsageCurrent = currentLiters;
+            const monthlyUsageDesired = desiredLiters;
+
+            const percentageSaved = ((currentLiters - desiredLiters) / currentLiters) * 100;
+
+            const output = `
+                <p>Name: ${name}</p>
+                <p>Liters needed per day for desired bill: ${dailyUsageDesired.toFixed(2)} liters</p>
+                <p>Liters needed per month for desired bill: ${monthlyUsageDesired.toFixed(2)} liters</p>
+                <p>Congratulations, ${name}! You are saving ${percentageSaved.toFixed(2)}% of your water usage. Thank you for your effort in conserving water. By saving water, you are not only reducing your bill but also helping to conserve this precious resource, ensuring its availability for future generations. Your actions contribute to a more sustainable and water-secure world!</p>
+            `;
+
+            document.getElementById('output').innerHTML = output;
+        }
+    </script>
+</body>
+</html>
