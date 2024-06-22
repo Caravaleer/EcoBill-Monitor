@@ -35,28 +35,28 @@ function calculateConsumption() {
 
     // Determine which Python function to call based on the random number
     let endpoint = '';
-    let message = '';
+    let amessage = '';
     if (randomNumber >= averageUnits * 0.9 && randomNumber < averageUnits * 1) {
         endpoint = 'almost';
-        message = 'You are about to cross your average limit of energy consumption. Proceed with caution, while using any electrical applicances.';
+        amessage = 'You are about to cross your average limit of energy consumption. Proceed with caution, while using any electrical applicances.';
 
     } else if (randomNumber >= averageUnits * 1 && randomNumber <= averageUnits * 1.15) {
         endpoint = 'crossed';
-        message = 'You have crossed your average limit of energy consumption. Proceed with caution, while using any electrical applicances.';
+        amessage = 'You have crossed your average limit of energy consumption. Proceed with caution, while using any electrical applicances.';
 
     } else if (randomNumber > averageUnits * 1.15) {
         endpoint = 'over';
-        message = 'You have severely crossed your average limit of energy consumption. Proceed with caution, while using any electrical applicances.';
+        amessage = 'You have severely crossed your average limit of energy consumption. Proceed with caution, while using any electrical applicances.';
 
     }
 
-
+    if (endpoint!=''||amessage!=''){
     emailjs.init("rqFtOLQ8G0_IpyKvB"); // Account Public Key
 
 
     var params ={
         name: name,
-        message:message,
+        message: amessage,
         subject: "Your Electricity Bill",
         to: email,
     };
@@ -65,5 +65,5 @@ function calculateConsumption() {
     var templateID = "template_b8wwvjf";
 
     emailjs.send(serviceID, templateID, params);
-
+}
 }
