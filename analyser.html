@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Electricity Bill Calculator</title>
+            <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/button.css" rel="stylesheet">
+    </head>
+    <body class="index-page" style="margin: 50px;">
+    <header id="header" class="header d-flex align-items-center fixed-top" style="background-color: #37517e;">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+            <a href="index.html" class="logo d-flex align-items-center me-auto">
+
+            <h1 class="sitename">BillBuster</h1>
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+            <ul>
+                <li><a href="index.html" class="">Home</a></li>
+                <li><a href="eletricity.HTML">Electricity</a></li>
+                <li><a href="analyser.html" class="">Analyse</a></li>
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+
+        </div>
+        </header>
+    <form id="billForm" style="margin-top: 100px;">
+        <h1>Electricity Bill Analyser</h1>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="bill1">Electricity Bill for Month 1 (Rs):</label>
+        <input type="number" id="bill1" name="bill1" required><br><br>
+        
+        <label for="bill2">Electricity Bill for Month 2 (Rs):</label>
+        <input type="number" id="bill2" name="bill2" required><br><br>
+        
+        <label for="bill3">Electricity Bill for Month 3 (Rs):</label>
+        <input type="number" id="bill3" name="bill3" required><br><br>
+        
+        <label for="costPerUnit">Cost of Electricity per Unit (Rs):</label>
+        <input type="number" id="costPerUnit" name="costPerUnit" value="7" required><br><br>
+
+        <button class="btn-53" type = "button" onclick="calculateConsumption()" style="margin-top: 30px; margin-bottom: 50px;">
+            <div class="original">SUBMIT</div>
+            <div class="letters">
+              
+              <span>S</span>
+              <span>U</span>
+              <span>B</span>
+              <span>M</span>
+              <span>I</span>
+              <span>T</span>
+
+            </div>
+          </button>
+        <div id="result" style="margin-top: 20px;"></div>
+    </form>
+    <footer id="footer" class="footer">
+
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">BillBuster</strong> <span>All Rights Reserved</span></p>
+        </div>
+
+        </footer>
+        <!-- Preloader -->
+        <div id="preloader"></div>
+
+        <!-- Vendor JS Files -->
+        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/vendor/php-email-form/validate.js"></script>
+        <script src="assets/vendor/aos/aos.js"></script>
+        <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+        <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+        <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        
+        <!-- Main JS File -->
+        <script src="assets/js/main.js"></script>
+
+    <script src="/assets/js/emailjs.js"></script>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>
