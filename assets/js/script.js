@@ -38,15 +38,17 @@ function calculateConsumption() {
     let amessage = '';
     if (randomNumber >= averageUnits * 0.9 && randomNumber < averageUnits * 1) {
         endpoint = 'almost';
-        amessage = 'You are about to cross your average limit of energy consumption. Proceed with caution, while using any electrical applicances.';
+        amessage = 'You are about to cross your average limit of energy consumption of '+averageUnits.toFixed(2).toString()+'. Proceed with caution, while using any electrical applicances.';
 
     } else if (randomNumber >= averageUnits * 1 && randomNumber <= averageUnits * 1.15) {
         endpoint = 'crossed';
-        amessage = 'You have crossed your average limit of energy consumption. Proceed with caution, while using any electrical applicances.';
+        const exceeded = randomNumber-averageUnits;
+        amessage = 'You have crossed your average limit of energy consumption by '+exceeded.toFixed(2).toString()+' units. Proceed with caution, while using any electrical applicances.';
 
     } else if (randomNumber > averageUnits * 1.15) {
         endpoint = 'over';
-        amessage = 'You have severely crossed your average limit of energy consumption. Proceed with caution, while using any electrical applicances.';
+        const exceeded = randomNumber-averageUnits;
+        amessage = 'You have severely crossed your average limit of energy consumption by '+exceeded.toFixed(2).toString()+' units. Proceed with caution, while using any electrical applicances.';
 
     }
 
