@@ -30,6 +30,7 @@ function calculateConsumption() {
         <p>Units consumed in Month 2: ${units2.toFixed(2)} units</p>
         <p>Units consumed in Month 3: ${units3.toFixed(2)} units</p>
         <p>Average units consumed: ${averageUnits.toFixed(2)} units</p>
+        <p>Random number within +/- 50% of average units: ${randomNumber.toFixed(2)}</p>
     `;
 
     // Determine which Python function to call based on the random number
