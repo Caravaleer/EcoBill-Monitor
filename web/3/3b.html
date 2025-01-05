@@ -1,28 +1,72 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Events</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
 </head>
-	
-
-<script type="text/javascript"> function msg()
-{var name=document.person.n1; var usn= document.person.n2;
-alert("Hello"+name.value+"USN"+usn.value);
-}
-</script>
-
 <body>
-</br></br>
-<form name="person">
+    <center>
+        <h1>Registration Form</h1>
+        <form>
+        <tr>
+            <td>
+                <table border="1">
+                    <tr>
+                        <td><label>Name</label></td>
+                        <td><input type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Email</label></td>
+                        <td><input type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Password</label></td>
+                        <td><input type="password" /></td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td><input type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td>
+                            <input type="radio" name="gender" value="male"> Male
+                            <input type="radio" name="gender" value="female"> Female
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Date of Birth</td>
+                        <td><input type="date" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Languages know</label></td>
+                        <td>
+                            <input type="checkbox"/>English 
+                            <input type="checkbox"/>Kannada 
+                            <input type="checkbox"/>Hindi 
+                            <input type="checkbox"/>French   
+                        
+                        </td>
+                        
+                    <tr>
+                        <td>Address</td>
+                        <td><textarea></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input value="Submit" type="submit" />
+                            <input value="Reset" type="reset" />
 
-EnterThename</br>
-<input type="text" name="n1"></br></br>
-
-EnterTheUSN</br>
-<input type="text"name="n2">
-
-
-<input type="submit"onClick="msg();">
-
-</form>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+            
+    </form>
+    </center>
+    
 </body>
 </html>
